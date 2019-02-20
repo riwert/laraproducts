@@ -25,8 +25,8 @@ CRUD produktów z wieloma cenami.
 * Walidacja frontendowa i backendowa pól produktów i cen.
 
 ## Technologie
-* Framework Laravel 5.4
-* Baza MySQL
+* Laravel 5.4
+* MySQL
 * Bootstrap
 * jQuery
 

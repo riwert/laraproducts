@@ -30,8 +30,9 @@ CRUD produktów z wieloma cenami.
 * Bootstrap
 * jQuery
 
-## Instalacja i uruchomienie
-* `git clone <repo>`
-* `composer install`
-* `php artisan migrate`
-* `php artisan serve`
+## Instalacja, konfiguracja i uruchomienie
+1. `git clone <repo>`
+1. `composer install`
+1. `cp .env.example .env` (uzupełnij dane dostępowe do bazy danych w pliku .env)
+1. `php artisan migrate`
+1. `php artisan serve`

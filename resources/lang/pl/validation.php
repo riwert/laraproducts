@@ -12,9 +12,9 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-    'required'             => 'Pole :attribute jest wymagane.',
-    'unique'             => 'Taki wpis w polu :attribute już istnieje. Proszę wpisać inny.',
-    'numeric'             => 'Pole :attribute musi być liczbą. Proszę użyć kropki zamiast przecinka.',
+    'required' => 'Pole :attribute jest wymagane.',
+    'unique' => 'Taki wpis w polu :attribute już istnieje. Proszę wpisać inny.',
+    'numeric' => 'Pole :attribute musi być liczbą. Proszę użyć kropki zamiast przecinka.',
 
     /*
     |--------------------------------------------------------------------------

@@ -7,20 +7,20 @@ CRUD produktów z wieloma cenami.
   * wstępna strona powitalna,
   * lista produktów z cenami,
   * podgląd szczegółów produktu z cenami,
-  * formularz dodawnia produktu z cenami,
+  * formularz dodawania produktu z cenami,
   * formularz edycji produktu z cenami,
   * potwierdzenie usunięcia produktu z cenami.
 * Produkty z polami:
   * nazwa,
-  * uniklany url,
+  * unikalny url,
   * opis,
-  * data utowrzenia,
+  * data utworzenia,
   * data modyfikacji.
 * Ceny z polami:
   *  nazwa,
   *  wartość,
   *  jednostka,
-  *  data utowrzenia,
+  *  data utworzenia,
   *  data modyfikacji.
 * Walidacja frontendowa i backendowa pól produktów i cen.
 

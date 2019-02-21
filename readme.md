@@ -12,7 +12,7 @@ CRUD produktów z wieloma cenami.
   * potwierdzenie usunięcia produktu z cenami.
 * Produkty z polami:
   * nazwa,
-  * unikalny url,
+  * unikalny URL,
   * opis,
   * data utworzenia,
   * data modyfikacji.
@@ -31,8 +31,12 @@ CRUD produktów z wieloma cenami.
 * jQuery
 
 ## Instalacja, konfiguracja i uruchomienie
-1. `git clone <repo>`
-1. `composer install`
-1. `cp .env.example .env` (uzupełnij dane dostępowe do bazy danych w pliku .env)
-1. `php artisan migrate`
-1. `php artisan serve`
+1. `git clone git@github.com:riwert/laraproducts.git` lub `git clone https://github.com/riwert/laraproducts.git` (skopiuj to repozytorium)
+1. `cd laraproducts` (przejdź do skopiowanego repozytorium)
+1. `composer install` (zainstaluj wszystkie zależności)
+1. `mysql -u root -p -e 'create database laraproducts CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'` (stwórz nową bazę danych MySQL)
+1. `cp .env.example .env` (skopiuj plik ze zmiennymi lokalnymi i uzupełnij dane dostępowe do bazy)
+1. `php artisan key:generate` (wygeneruj nowy klucz aplikacji)
+1. `php artisan config:cache` (wyczyść cache konfiguracji)
+1. `php artisan migrate` (wykonaj migrację struktury bazy danych)
+1. `php artisan serve` (uruchom lokalny serwer PHP)

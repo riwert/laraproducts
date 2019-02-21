@@ -2,6 +2,9 @@
 
 CRUD produktów z wieloma cenami.
 
+## Demo
+[![Sceenshot](sceenshot.png?raw=true)](http://products.revert.pl "Zobacz demo")
+
 ## Cechy
 * Widoki:
   * wstępna strona powitalna,

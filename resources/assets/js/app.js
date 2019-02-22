@@ -7,6 +7,7 @@
 
 require('bootstrap');
 
+import './products.js';
 import './prices.js';
 
 /**

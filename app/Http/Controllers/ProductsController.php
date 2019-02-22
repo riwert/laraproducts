@@ -53,7 +53,7 @@ class ProductsController extends Controller
         $product->save();
 
         if (request('prices')) {
-            $this->savePrices($product);
+            $product->savePrices(request('prices'));
         }
 
         return redirect('/products')->with('success', __('Produkt został dodany.'));

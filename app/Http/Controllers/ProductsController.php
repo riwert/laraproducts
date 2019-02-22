@@ -55,17 +55,7 @@ class ProductsController extends Controller
         $product->save();
 
         if (request('prices')) {
-            $prices = [];
-
-            foreach (request('prices') as $price) {
-                $priceEdit = new ProductPrice();
-                $priceEdit->name = $price['name'];
-                $priceEdit->value = str_replace(',', '.', $price['value']);
-                $priceEdit->unit = $price['unit'];
-                $prices[] = $priceEdit;
-            }
-
-            $product->prices()->saveMany($prices);
+            $this->savePrices($product);
         }
 
         return redirect('/products')->with('success', __('Produkt został dodany.'));
@@ -94,29 +84,11 @@ class ProductsController extends Controller
         $product->save();
 
         if (request('prices')) {
-            $prices = [];
-
-            foreach (request('prices') as $price) {
-                $priceEdit = (isset($price['id'])) ? ProductPrice::findOrFail($price['id']) : new ProductPrice();
-                $priceEdit->name = $price['name'];
-                $priceEdit->value = str_replace(',', '.', $price['value']);
-                $priceEdit->unit = $price['unit'];
-                $prices[] = $priceEdit;
-            }
-
-            $product->prices()->saveMany($prices);
+           $this->savePrices($product);
         }
 
         if (request('deletePrices')) {
-            $deletePrices = [];
-
-            foreach (request('deletePrices') as $price) {
-                if (isset($price['id'])) {
-                    $deletePrices[] = $price['id'];
-                }
-            }
-
-            ProductPrice::whereIn('id', $deletePrices)->delete();
+            $this->deletePrices($product);
         }
 
         return redirect('/products')->with('success', __('Zmiany zostały zapisane.'));
@@ -141,5 +113,33 @@ class ProductsController extends Controller
         $product->delete();
 
         return redirect('/products')->with('success', __('Produkt został usunięty.'));
+    }
+
+    private function savePrices(&$product)
+    {
+        $prices = [];
+
+        foreach (request('prices') as $price) {
+            $priceObj = (isset($price['id'])) ? ProductPrice::findOrFail($price['id']) : new ProductPrice();
+            $priceObj->name = $price['name'];
+            $priceObj->value = str_replace(',', '.', $price['value']);
+            $priceObj->unit = $price['unit'];
+            $prices[] = $priceObj;
+        }
+
+        $product->prices()->saveMany($prices);
+    }
+
+    private function deletePrices(&$product)
+    {
+        $deletePrices = [];
+
+        foreach (request('deletePrices') as $price) {
+            if (isset($price['id'])) {
+                $deletePrices[] = (int) $price['id'];
+            }
+        }
+
+        ProductPrice::whereIn('id', $deletePrices)->delete();
     }
 }

@@ -48,9 +48,7 @@ class ProductsController extends Controller
     {
         $product = new Product();
 
-        $product->name = request('name');
-        $product->slug = request('slug');
-        $product->description = request('description');
+        $product->setFromRequest();
 
         $product->save();
 
@@ -77,18 +75,16 @@ class ProductsController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        $product->name = request('name');
-        $product->slug = request('slug');
-        $product->description = request('description');
+        $product->setFromRequest();
 
         $product->save();
 
         if (request('prices')) {
-           $this->savePrices($product);
+            $product->savePrices(request('prices'));
         }
 
         if (request('deletePrices')) {
-            $this->deletePrices($product);
+            $product->deletePrices(request('deletePrices'));
         }
 
         return redirect('/products')->with('success', __('Zmiany zostały zapisane.'));
@@ -113,33 +109,5 @@ class ProductsController extends Controller
         $product->delete();
 
         return redirect('/products')->with('success', __('Produkt został usunięty.'));
-    }
-
-    private function savePrices(&$product)
-    {
-        $prices = [];
-
-        foreach (request('prices') as $price) {
-            $priceObj = (isset($price['id'])) ? ProductPrice::findOrFail($price['id']) : new ProductPrice();
-            $priceObj->name = $price['name'];
-            $priceObj->value = str_replace(',', '.', $price['value']);
-            $priceObj->unit = $price['unit'];
-            $prices[] = $priceObj;
-        }
-
-        $product->prices()->saveMany($prices);
-    }
-
-    private function deletePrices(&$product)
-    {
-        $deletePrices = [];
-
-        foreach (request('deletePrices') as $price) {
-            if (isset($price['id'])) {
-                $deletePrices[] = (int) $price['id'];
-            }
-        }
-
-        ProductPrice::whereIn('id', $deletePrices)->delete();
     }
 }

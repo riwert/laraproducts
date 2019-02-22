@@ -3,11 +3,45 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\ProductPrice;
 
 class Product extends Model
 {
     public function prices()
     {
         return $this->hasMany('App\ProductPrice');
+    }
+
+    public function setFromRequest()
+    {
+        $this->name = request('name');
+        $this->slug = request('slug');
+        $this->description = request('description');
+    }
+
+    public function savePrices(array $prices)
+    {
+        $priceObjArray = [];
+
+        foreach ($prices as $price) {
+            $priceObj = (isset($price['id'])) ? ProductPrice::findOrFail((int) $price['id']) : new ProductPrice();
+            $priceObj->setFromArray($price);
+            $priceObjArray[] = $priceObj;
+        }
+
+        $this->prices()->saveMany($priceObjArray);
+    }
+
+    public function deletePrices(array $prices)
+    {
+        $priceIds = [];
+
+        foreach ($prices as $price) {
+            if (isset($price['id'])) {
+                $priceIds[] = (int) $price['id'];
+            }
+        }
+
+        ProductPrice::where('product_id', $this->id)->whereIn('id', $priceIds)->delete();
     }
 }

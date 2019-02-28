@@ -24,7 +24,7 @@
 
         <div class="links">
             <button class="btn btn-primary" type="submit">{{ __('Zapisz produkt') }}</button>
-            <a class="btn btn-secondary ml-1" href="/products">{{ __('Powrót') }}</a>
+            <a class="btn btn-secondary ml-1" href="{{ action('ProductsController@index') }}">{{ __('Powrót') }}</a>
         </div>
     </form>
 @endsection

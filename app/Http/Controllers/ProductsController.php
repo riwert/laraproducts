@@ -59,10 +59,8 @@ class ProductsController extends Controller
         return redirect('/products')->with('success', __('Produkt został dodany.'));
     }
 
-    public function edit($id)
+    public function edit(Product $product)
     {
-        $product = Product::findOrFail($id);
-
         $title = __('Edycja produktu ') . $product->name;
 
         return view('products.edit', [
@@ -71,10 +69,8 @@ class ProductsController extends Controller
         ]);
     }
 
-    public function update(ProductRequest $request, $id)
+    public function update(ProductRequest $request, Product $product)
     {
-        $product = Product::findOrFail($id);
-
         $product->setFromRequest();
 
         $product->save();
@@ -90,10 +86,8 @@ class ProductsController extends Controller
         return redirect('/products')->with('success', __('Zmiany zostały zapisane.'));
     }
 
-    public function delete($id)
+    public function delete(Product $product)
     {
-        $product = Product::findOrFail($id);
-
         $title = __('Usuwanie produktu ') . $product->name;
 
         return view('products.delete', [
@@ -102,10 +96,8 @@ class ProductsController extends Controller
         ]);
     }
 
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        $product = Product::findOrFail($id);
-
         $product->delete();
 
         return redirect('/products')->with('success', __('Produkt został usunięty.'));

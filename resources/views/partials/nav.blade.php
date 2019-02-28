@@ -6,17 +6,48 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
+            <ul class="nav navbar-nav mr-auto">
                 <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('home') }}">{{ __('Strona główna') }}</a>
                 </li>
                 <li class="nav-item {{ Request::is('products') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('products.index') }}">{{ __('Produkty') }}</a>
-                </li>                      
+                </li>
                 <li class="nav-item {{ Request::is('products/add') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('products.add') }}">{{ __('Dodaj produkt') }}</a>
-                </li>                      
-            </ul>    
+                </li>
+            </ul>
+            <!-- Right Side Of Navbar -->
+            <ul class="nav navbar-nav navbar-right">
+                <!-- Authentication Links -->
+                @if (Auth::guest())
+                    <li class="nav-item {{ Request::is('login') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Zaloguj') }}</a>
+                    </li>
+                    <li class="nav-item {{ Request::is('register') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Zarejestruj') }}</a>
+                    </li>
+                @else
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="dropdown-item">
+                                <a class="nav-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    {{ __('Wyloguj') }}
+                                </a>
+                                <form id="logout-form" class="d-none" action="{{ route('logout') }}" method="POST">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+            </ul>
         </div>
     </div>
 </nav>

@@ -7,7 +7,7 @@ use App\Http\Requests\ProductRequest;
 use App\Product;
 
 class ProductsController extends Controller
-{
+{    
     public function index()
     {
         $title = __('Lista produktów');

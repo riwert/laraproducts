@@ -20,3 +20,5 @@ Route::get('/products/{product}/edit', 'ProductsController@edit')->name('product
 Route::patch('/products/{product}', 'ProductsController@update')->name('products.update');
 Route::get('/products/{product}/delete', 'ProductsController@delete')->name('products.delete');
 Route::delete('/products/{product}', 'ProductsController@destroy')->name('products.destroy');
+
+Auth::routes();

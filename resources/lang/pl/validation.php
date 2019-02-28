@@ -15,6 +15,10 @@ return [
     'required' => 'Pole :attribute jest wymagane.',
     'unique' => 'Taki wpis w polu :attribute już istnieje. Proszę wpisać inny.',
     'numeric' => 'Pole :attribute musi być liczbą. Proszę użyć kropki zamiast przecinka.',
+    'min' => [        
+        'string'  => 'Pole :attribute musi mieć co najmniej :min znaków.',
+    ],
+    'confirmed' => 'Pole :attribute nie pasuje z potwierdzeniem.',
 
     /*
     |--------------------------------------------------------------------------
@@ -50,7 +54,9 @@ return [
         'description' => 'Opis prduktu',
         'prices.*.name' => 'Nazwa ceny',
         'prices.*.value' => 'Wartość ceny',
-        'prices.*.unit' => 'Jednostka ceny'
+        'prices.*.unit' => 'Jednostka ceny',
+        'email' => 'E-mail',
+        'password' => 'Hasło',
     ],
 
 ];

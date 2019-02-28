@@ -25,8 +25,8 @@
     @endif
 
     <div class="links">
-        <a class="btn btn-success" href="{{ action('ProductsController@edit', ['id' => $product->id]) }}">{{ __('Edytuj') }}</a>
-        <a class="btn btn-danger ml-1" href="{{ action('ProductsController@delete', ['id' => $product->id]) }}">{{ __('Usuń') }}</a>
-        <a class="btn btn-secondary ml-1" href="{{ action('ProductsController@index') }}">{{ __('Powrót') }}</a>
+        <a class="btn btn-success" href="{{ route('products.edit', ['id' => $product->id]) }}">{{ __('Edytuj') }}</a>
+        <a class="btn btn-danger ml-1" href="{{ route('products.delete', ['id' => $product->id]) }}">{{ __('Usuń') }}</a>
+        <a class="btn btn-secondary ml-1" href="{{ route('products.index') }}">{{ __('Powrót') }}</a>
     </div>
 @endsection

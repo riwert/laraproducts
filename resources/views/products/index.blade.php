@@ -11,9 +11,9 @@
         <ul class="product-list list-group mb-3">
             @foreach($products as $product)
                 <li class="list-group-item list-group-item-action">
-                    <a href="{{ action('ProductsController@view', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
-                    <a class="btn btn-danger float-right ml-1" href="{{ action('ProductsController@delete', ['id' => $product->id]) }}">{{ __('Usuń') }}</a>
-                    <a class="btn btn-success float-right ml-1" href="{{ action('ProductsController@edit', ['id' => $product->id]) }}">{{ __('Edytuj') }}</a>
+                    <a href="{{ route('products.view', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
+                    <a class="btn btn-danger float-right ml-1" href="{{ route('products.delete', ['id' => $product->id]) }}">{{ __('Usuń') }}</a>
+                    <a class="btn btn-success float-right ml-1" href="{{ route('products.edit', ['id' => $product->id]) }}">{{ __('Edytuj') }}</a>
 
                     @if ($product->prices->count())
                         <ul class="product-price-list">
@@ -30,6 +30,6 @@
     @endif
 
     <div class="links">
-        <a class="btn btn-primary" href="{{ action('ProductsController@add') }}">{{ __('Dodaj produkt') }}</a>
+        <a class="btn btn-primary" href="{{ route('products.add') }}">{{ __('Dodaj produkt') }}</a>
     </div>
 @endsection

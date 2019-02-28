@@ -9,7 +9,7 @@
 
     @include('products.dates')
 
-    <form method="POST" action="{{ action('ProductsController@update', ['id' => $product->id]) }}">
+    <form method="POST" action="{{ route('products.update', ['id' => $product->id]) }}">
         {{ method_field('PATCH') }}
         {{ csrf_field() }}
         <div class="form-group">
@@ -26,7 +26,7 @@
         </div>
         <div class="links">
             <button class="btn btn-primary" type="submit">{{ __('Zapisz zmiany') }}</button>
-            <a class="btn btn-secondary ml-1" href="{{ action('ProductsController@index') }}">{{ __('Powrót') }}</a>
+            <a class="btn btn-secondary ml-1" href="{{ route('products.index') }}">{{ __('Powrót') }}</a>
         </div>
     </form>
 @endsection

@@ -8,7 +8,7 @@
     </h1>
 
     <div class="links">
-        <a class="btn btn-primary" href="{{ action('ProductsController@index') }}">Zobacz produkty</a>
-        <a class="btn btn-primary ml-1" href="{{ action('ProductsController@add') }}">Dodaj produkt</a>
+        <a class="btn btn-primary" href="{{ route('products.index') }}">Zobacz produkty</a>
+        <a class="btn btn-primary ml-1" href="{{ route('products.add') }}">Dodaj produkt</a>
     </div>
 @endsection

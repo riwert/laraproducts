@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/', 'PagesController@home');
-Route::get('/products', 'ProductsController@index');
-Route::get('/products/add', 'ProductsController@add');
-Route::post('/products', 'ProductsController@store');
-Route::get('/products/{slug}', 'ProductsController@view');
-Route::get('/products/{id}/edit', 'ProductsController@edit');
-Route::patch('/products/{id}', 'ProductsController@update');
-Route::get('/products/{id}/delete', 'ProductsController@delete');
-Route::delete('/products/{id}', 'ProductsController@destroy');
+Route::get('/', 'PagesController@home')->name('home');
+Route::get('/products', 'ProductsController@index')->name('products.index');
+Route::get('/products/add', 'ProductsController@add')->name('products.add');
+Route::post('/products', 'ProductsController@store')->name('products.store');
+Route::get('/products/{slug}', 'ProductsController@view')->name('products.view');
+Route::get('/products/{id}/edit', 'ProductsController@edit')->name('products.edit');
+Route::patch('/products/{id}', 'ProductsController@update')->name('products.update');
+Route::get('/products/{id}/delete', 'ProductsController@delete')->name('products.delete');
+Route::delete('/products/{id}', 'ProductsController@destroy')->name('products.destroy');

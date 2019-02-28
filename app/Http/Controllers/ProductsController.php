@@ -56,7 +56,7 @@ class ProductsController extends Controller
             $product->savePrices(request('prices'));
         }
 
-        return redirect('/products')->with('success', __('Produkt został dodany.'));
+        return redirect()->route('products.index')->with('success', __('Produkt został dodany.'));
     }
 
     public function edit(Product $product)
@@ -83,7 +83,7 @@ class ProductsController extends Controller
             $product->deletePrices(request('deletePrices'));
         }
 
-        return redirect('/products')->with('success', __('Zmiany zostały zapisane.'));
+        return redirect()->route('products.index')->with('success', __('Zmiany zostały zapisane.'));
     }
 
     public function delete(Product $product)
@@ -100,6 +100,6 @@ class ProductsController extends Controller
     {
         $product->delete();
 
-        return redirect('/products')->with('success', __('Produkt został usunięty.'));
+        return redirect()->route('products.index')->with('success', __('Produkt został usunięty.'));
     }
 }

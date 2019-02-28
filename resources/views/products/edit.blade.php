@@ -9,7 +9,7 @@
 
     @include('products.dates')
 
-    <form method="POST" action="/products/{{ $product->id }}">
+    <form method="POST" action="{{ action('ProductsController@update', ['id' => $product->id]) }}">
         {{ method_field('PATCH') }}
         {{ csrf_field() }}
         <div class="form-group">

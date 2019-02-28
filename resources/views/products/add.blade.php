@@ -7,7 +7,7 @@
         {{ $title }}
     </h1>
 
-    <form method="POST" action="/products">
+    <form method="POST" action="{{ action('ProductsController@store') }}">
         {{ csrf_field() }}
         <div class="form-group">
             <input class="form-control" type="text" name="name" value="{{ old('name') }}" placeholder="{{ __('Nazwa produktu') }}" required="required">

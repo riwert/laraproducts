@@ -9,7 +9,7 @@
 
     @include('products.dates')
 
-    <form method="POST" action="/products/{{ $product->id }}">
+    <form method="POST" action="{{ action('ProductsController@destroy', ['id' => $product->id]) }}">
         {{ method_field('DELETE') }}
         {{ csrf_field() }}
         <div class="form-group">

@@ -22,10 +22,10 @@ class ProductRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
+    {        
         return [
             'name' => 'required',
-            'slug' => 'required|unique:products,slug,' . $this->product->id,
+            'slug' => 'required|unique:products,slug,' . (($this->product) ? $this->product->id : null),
             'description' => 'required',
             'prices.*.name' => 'required',
             'prices.*.value' => 'required|numeric',

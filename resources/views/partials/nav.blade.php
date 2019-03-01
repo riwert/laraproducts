@@ -33,18 +33,16 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
-                        <ul class="dropdown-menu" role="menu">
-                            <li class="dropdown-item">
-                                <a class="nav-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                    {{ __('Wyloguj') }}
-                                </a>
-                                <form id="logout-form" class="d-none" action="{{ route('logout') }}" method="POST">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
+                        <div class="dropdown-menu" role="menu">
+                            <a class="dropdown-item d-block" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                {{ __('Wyloguj') }}
+                            </a>
+                            <form id="logout-form" class="d-none" action="{{ route('logout') }}" method="POST">
+                                {{ csrf_field() }}
+                            </form>
+                        </div>
                     </li>
                 @endif
             </ul>

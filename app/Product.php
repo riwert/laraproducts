@@ -12,8 +12,13 @@ class Product extends Model
         return $this->hasMany('App\ProductPrice');
     }
 
-    public function setFromRequest()
+    public function user()
     {
+        return $this->belongsTo('App\User');
+    }
+
+    public function setFromRequest()
+    {        
         $this->name = request('name');
         $this->slug = request('slug');
         $this->description = request('description');

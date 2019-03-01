@@ -12,7 +12,7 @@
             <label for="email" class="col-md-4 control-label">{{ __('Adres e-mail') }}</label>
 
             <div class="col-md-6">
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                 @if ($errors->has('email'))
                     <span class="help-block">

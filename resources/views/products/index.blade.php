@@ -37,6 +37,9 @@
                 </li>
             @endforeach
         </ul>
+        <nav class="pagination-container justify-content-center" aria-label="{{ __('Stronicowanie produktów') }}">
+            {{ $products->links('vendor.pagination.bootstrap-4') }}
+        </nav>
     @endif
 
     <div class="links">

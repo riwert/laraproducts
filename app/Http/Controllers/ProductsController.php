@@ -8,6 +8,8 @@ use App\Product;
 
 class ProductsController extends Controller
 {
+    private $limit = 10;
+
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'view']);
@@ -17,7 +19,7 @@ class ProductsController extends Controller
     {
         $title = __('Lista produktów');
 
-        $products = Product::all();
+        $products = Product::orderBy('created_at', 'asc')->paginate($this->limit);
 
         return view('products.index', [
             'title' => $title,

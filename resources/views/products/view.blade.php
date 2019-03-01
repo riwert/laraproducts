@@ -25,8 +25,10 @@
     @endif
 
     <div class="links">
-        <a class="btn btn-success" href="{{ route('products.edit', ['id' => $product->id]) }}">{{ __('Edytuj') }}</a>
-        <a class="btn btn-danger ml-1" href="{{ route('products.delete', ['id' => $product->id]) }}">{{ __('Usuń') }}</a>
+        @can('modify', $product)
+            <a class="btn btn-success" href="{{ route('products.edit', ['id' => $product->id]) }}">{{ __('Edytuj') }}</a>
+            <a class="btn btn-danger ml-1" href="{{ route('products.delete', ['id' => $product->id]) }}">{{ __('Usuń') }}</a>
+        @endcan        
         <a class="btn btn-secondary ml-1" href="{{ route('products.index') }}">{{ __('Powrót') }}</a>
     </div>
 @endsection

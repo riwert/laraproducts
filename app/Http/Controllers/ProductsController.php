@@ -7,7 +7,12 @@ use App\Http\Requests\ProductRequest;
 use App\Product;
 
 class ProductsController extends Controller
-{    
+{
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'view']);
+    }
+
     public function index()
     {
         $title = __('Lista produktów');
@@ -47,6 +52,7 @@ class ProductsController extends Controller
     {
         $product = new Product();
 
+        $product->user_id = auth()->id();
         $product->setFromRequest();
 
         $product->save();
@@ -60,6 +66,8 @@ class ProductsController extends Controller
 
     public function edit(Product $product)
     {
+        $this->authorize('modify', $product);
+
         $title = __('Edycja produktu ') . $product->name;
 
         return view('products.edit', [
@@ -70,6 +78,8 @@ class ProductsController extends Controller
 
     public function update(ProductRequest $request, Product $product)
     {
+        $this->authorize('modify', $product);
+
         $product->setFromRequest();
 
         $product->save();
@@ -87,6 +97,8 @@ class ProductsController extends Controller
 
     public function delete(Product $product)
     {
+        $this->authorize('modify', $product);
+
         $title = __('Usuwanie produktu ') . $product->name;
 
         return view('products.delete', [
@@ -97,6 +109,8 @@ class ProductsController extends Controller
 
     public function destroy(Product $product)
     {
+        $this->authorize('modify', $product);
+
         $product->delete();
 
         return redirect()->route('products.index')->with('success', __('Produkt został usunięty.'));

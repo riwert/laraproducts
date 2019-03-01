@@ -7,7 +7,7 @@
         {{ $title }}
     </h1>
 
-    @include('products.dates')
+    @include('products.details')
 
     <form method="POST" action="{{ route('products.destroy', ['id' => $product->id]) }}">
         {{ method_field('DELETE') }}

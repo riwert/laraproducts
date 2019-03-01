@@ -7,7 +7,7 @@
         {{ $title }}
     </h1>
 
-    @include('products.dates')
+    @include('products.details')
 
     <div class="description">
         <p>{!! nl2br(e($product->description)) !!}</p>

@@ -57,6 +57,8 @@ return [
         'prices.*.unit' => 'Jednostka ceny',
         'email' => 'E-mail',
         'password' => 'Hasło',
+        'old_password' => 'Stare hasło',
+        'new_password' => 'Nowe hasło',        
     ],
 
 ];

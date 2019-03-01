@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PagesController@home')->name('home');
+
 Route::get('/products', 'ProductsController@index')->name('products.index');
 Route::get('/products/add', 'ProductsController@add')->name('products.add');
 Route::post('/products', 'ProductsController@store')->name('products.store');
@@ -20,5 +21,8 @@ Route::get('/products/{product}/edit', 'ProductsController@edit')->name('product
 Route::patch('/products/{product}', 'ProductsController@update')->name('products.update');
 Route::get('/products/{product}/delete', 'ProductsController@delete')->name('products.delete');
 Route::delete('/products/{product}', 'ProductsController@destroy')->name('products.destroy');
+
+Route::get('/users/{user}/edit', 'UsersController@edit')->name('users.edit');
+Route::patch('/users/{user}', 'UsersController@update')->name('users.update');
 
 Auth::routes();

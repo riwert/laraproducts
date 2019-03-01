@@ -10,7 +10,7 @@
 
         <input type="hidden" name="token" value="{{ $token }}">
 
-        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
             <label for="email" class="col-md-4 control-label">{{ __('Adres e-mail') }}</label>
 
             <div class="col-md-6">
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} row">
             <label for="password" class="col-md-4 control-label">{{ __('Hasło') }}</label>
 
             <div class="col-md-6">
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }} row">
             <label for="password-confirm" class="col-md-4 control-label">{{ __('Potwierdź hasło') }}</label>
             <div class="col-md-6">
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -51,8 +51,8 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-6 col-md-offset-4">
+        <div class="form-group row">
+            <div class="col-md-6 offset-md-4">
                 <button type="submit" class="btn btn-primary">
                     {{ __('Zresetuj hasło') }}
                 </button>

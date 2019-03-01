@@ -14,6 +14,17 @@ class User extends Authenticatable
         return $this->hasMany('App\Products');
     }
 
+    public function setFromRequest()
+    {
+        $this->name = request('name');
+        $this->email = request('email');
+    }
+
+    public function setNewPasswordFromRequest()
+    {
+        $this->password = bcrypt(request('new_password'));
+    }
+
     /**
      * The attributes that are mass assignable.
      *

@@ -9,6 +9,7 @@ require('bootstrap');
 
 import './products.js';
 import './prices.js';
+import './password.js';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

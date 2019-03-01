@@ -34,7 +34,8 @@
                         </a>
 
                         <div class="dropdown-menu" role="menu">
-                            <a class="dropdown-item d-block" href="{{ route('logout') }}"
+                            <a class="dropdown-item" href="{{ route('users.edit', ['id' => Auth::user()->id]) }}">{{ __('Konto') }}</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                                 {{ __('Wyloguj') }}

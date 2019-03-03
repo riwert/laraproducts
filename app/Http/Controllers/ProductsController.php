@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Product;
 use App\Mail\ProductCreated;
+use App\Mail\ProductUpdated;
 use Mail;
 
 class ProductsController extends Controller
@@ -88,6 +89,8 @@ class ProductsController extends Controller
     {
         $this->authorize('modify', $product);
 
+        $oldProduct = $product->replicate();
+
         $product->setFromRequest();
 
         $product->save();
@@ -99,6 +102,10 @@ class ProductsController extends Controller
         if (request('deletePrices')) {
             $product->deletePrices(request('deletePrices'));
         }
+
+        Mail::to($product->user->email)->send(
+            new ProductUpdated($product, $oldProduct)
+        );
 
         return redirect()->route('products.index')->with('success', __('Zmiany zostały zapisane.'));
     }

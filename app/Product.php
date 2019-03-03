@@ -18,7 +18,7 @@ class Product extends Model
     }
 
     public function setFromRequest()
-    {        
+    {
         $this->name = request('name');
         $this->slug = request('slug');
         $this->description = request('description');

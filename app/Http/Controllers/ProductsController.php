@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Product;
+use App\Mail\ProductCreated;
+use Mail;
 
 class ProductsController extends Controller
 {
@@ -62,6 +64,10 @@ class ProductsController extends Controller
         if (request('prices')) {
             $product->savePrices(request('prices'));
         }
+
+        Mail::to($product->user->email)->send(
+            new ProductCreated($product)
+        );
 
         return redirect()->route('products.index')->with('success', __('Produkt został dodany.'));
     }

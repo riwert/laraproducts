@@ -10,13 +10,13 @@
     <form method="POST" action="{{ route('products.store') }}">
         {{ csrf_field() }}
         <div class="form-group">
-            <input class="form-control" type="text" name="name" value="{{ old('name') }}" placeholder="{{ __('Nazwa produktu') }}" required="required">
+            <input class="form-control" type="text" name="name" value="{{ old('name') }}" placeholder="{{ __('Nazwa produktu') }}" required>
         </div>
         <div class="form-group">
-            <input class="form-control" type="text" name="slug" value="{{ old('slug') }}" placeholder="{{ __('Unikalny URL') }}" required="required">
+            <input class="form-control" type="text" name="slug" value="{{ old('slug') }}" placeholder="{{ __('Unikalny URL') }}" required>
         </div>
         <div class="form-group">
-            <textarea class="form-control" name="description" placeholder="{{ __('Opis produktu') }}" required="required">{{ old('description') }}</textarea>
+            <textarea class="form-control" name="description" placeholder="{{ __('Opis produktu') }}" required>{{ old('description') }}</textarea>
         </div>
         <div class="form-group">
             @include('products.prices-input')            

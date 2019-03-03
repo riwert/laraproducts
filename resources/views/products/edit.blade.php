@@ -13,13 +13,13 @@
         {{ method_field('PATCH') }}
         {{ csrf_field() }}
         <div class="form-group">
-            <input class="form-control" type="text" name="name" value="{{ $product->name }}" placeholder="{{ __('Nazwa produktu') }}" required="required">
+            <input class="form-control" type="text" name="name" value="{{ $product->name or old('name') }}" placeholder="{{ __('Nazwa produktu') }}" required>
         </div>
         <div class="form-group">
-            <input class="form-control" type="text" name="slug" value="{{ $product->slug }}" placeholder="{{ __('Unikalny URL') }}" required="required">
+            <input class="form-control" type="text" name="slug" value="{{ $product->slug or old('slug') }}" placeholder="{{ __('Unikalny URL') }}" required>
         </div>
         <div class="form-group">
-            <textarea class="form-control" name="description" placeholder="{{ __('Opis produktu') }}" required="required">{{ $product->description }}</textarea>
+            <textarea class="form-control" name="description" placeholder="{{ __('Opis produktu') }}" required>{{ $product->description or old('description') }}</textarea>
         </div>
         <div class="form-group">
             @include('products.prices-input')

@@ -59,7 +59,6 @@ class ProductsController extends Controller
 
         $product->user_id = auth()->id();
         $product->setFromRequest();
-
         $product->save();
 
         if (request('prices')) {
@@ -89,10 +88,10 @@ class ProductsController extends Controller
     {
         $this->authorize('modify', $product);
 
-        $oldProduct = $product->replicate();
+        $product->load('prices');
 
+        $oldProduct = unserialize(serialize($product));
         $product->setFromRequest();
-
         $product->save();
 
         if (request('prices')) {
@@ -102,6 +101,8 @@ class ProductsController extends Controller
         if (request('deletePrices')) {
             $product->deletePrices(request('deletePrices'));
         }
+
+        $product->load('prices');
 
         Mail::to($product->user->email)->send(
             new ProductUpdated($product, $oldProduct)

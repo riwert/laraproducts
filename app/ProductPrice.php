@@ -10,7 +10,7 @@ class ProductPrice extends Model
     {
         return $this->belongsTo('App\Product');
     }
-    
+
     public function setFromArray(array $price)
     {
         $this->name = $price['name'];

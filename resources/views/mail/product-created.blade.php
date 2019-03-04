@@ -1,5 +1,5 @@
 @component('mail::message')
-# {{ __('Nowy Produkt: ') }} {{ $product->name }}
+# {{ __('Dodano nowy produkt: ') }} {{ $product->name }}
 
 {{ $product->description }}
 

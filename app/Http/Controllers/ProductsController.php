@@ -7,6 +7,7 @@ use App\Http\Requests\ProductRequest;
 use App\Product;
 use App\Mail\ProductCreated;
 use App\Mail\ProductUpdated;
+use App\Mail\ProductDeleted;
 use Mail;
 
 class ProductsController extends Controller
@@ -127,7 +128,13 @@ class ProductsController extends Controller
     {
         $this->authorize('modify', $product);
 
+        $product->load('prices');
+
         $product->delete();
+
+        Mail::to($product->user->email)->send(
+            new ProductDeleted($product)
+        );
 
         return redirect()->route('products.index')->with('success', __('Produkt został usunięty.'));
     }

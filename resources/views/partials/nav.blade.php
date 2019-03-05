@@ -16,6 +16,14 @@
                 <li class="nav-item {{ Request::is('products/add') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('products.add') }}">{{ __('Dodaj produkt') }}</a>
                 </li>
+                <li class="nav-item {{ Request::is('categories') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('categories.index') }}">{{ __('Kategorie') }}</a>
+                </li>
+                @if (Auth::user() && Auth::user()->isAdmin())                    
+                    <li class="nav-item {{ Request::is('categories/add') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('categories.add') }}">{{ __('Dodaj kategorię') }}</a>
+                    </li>
+                @endif
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">

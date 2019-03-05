@@ -8,23 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-
-    public function products()
-    {
-        return $this->hasMany('App\Products');
-    }
-
-    public function setFromRequest()
-    {
-        $this->name = request('name');
-        $this->email = request('email');
-    }
-
-    public function setNewPasswordFromRequest()
-    {
-        $this->password = bcrypt(request('new_password'));
-    }
-
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -42,4 +26,25 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function products()
+    {
+        return $this->hasMany('App\Products');
+    }
+
+    public function setFromRequest()
+    {
+        $this->name = request('name');
+        $this->email = request('email');
+    }
+
+    public function setNewPasswordFromRequest()
+    {
+        $this->password = bcrypt(request('new_password'));
+    }
+
+    public function isAdmin()
+    {
+        return $this->id == 1;
+    }
 }

@@ -54,4 +54,9 @@ class Product extends Model
 
         ProductPrice::where('product_id', $this->id)->whereIn('id', $priceIds)->delete();
     }
+
+    public function saveCategories(array $categories)
+    {
+        $this->categories()->sync($categories);
+    }
 }

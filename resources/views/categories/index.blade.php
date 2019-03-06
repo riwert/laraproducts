@@ -9,15 +9,17 @@
 
     @if ($categories->count())
         <ul class="category-list list-group mb-3">
-            @foreach($categories as $category)
+            @foreach ($categories as $category)
                 <li class="list-group-item list-group-item-action">
                     <a href="{{ route('categories.view', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
 
                     @if ($category->products->count())
-                        <span class="products-count ml-1">
-                            ({{ __('Produkty') }}:<br>
-                            <strong>{{ $category->products->count() }}</strong>)
-                        </span>
+                        <small class="products-count ml-1">
+                            (
+                                {{ __('produkty') }}:
+                                <strong>{{ $category->products->count() }}</strong>
+                            )
+                        </small>
                     @endif
 
                     @can('manage', $category)

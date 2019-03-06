@@ -18,9 +18,9 @@
         <div class="form-group">
             <textarea class="form-control" name="description" placeholder="{{ __('Opis produktu') }}" required>{{ old('description') }}</textarea>
         </div>
-        <div class="form-group">
-            @include('products.prices-input')            
-        </div>
+
+        @include('prices.inputs')
+        @include('categories.checkboxes')
 
         <div class="links">
             <button class="btn btn-primary" type="submit">{{ __('Zapisz produkt') }}</button>

@@ -16,7 +16,7 @@
     @if ($product->prices->count())
         <h3>{{ __('Ceny') }}</h3>
         <ul class="product-price-list list-group mb-3">
-            @foreach($product->prices as $price)
+            @foreach ($product->prices as $price)
                 <li class="list-group-item">
                     {{ $price->name }} - {{ $price->value }} {{ $price->unit }}
                 </li>

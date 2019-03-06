@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Product;
+use App\Category;
 use App\Mail\ProductCreated;
 use App\Mail\ProductUpdated;
 use App\Mail\ProductDeleted;
@@ -49,8 +50,11 @@ class ProductsController extends Controller
     {
         $title = __('Dodaj nowy produkt');
 
+        $categories = Category::orderBy('created_at', 'asc')->get();
+
         return view('products.add', [
-            'title' => $title
+            'title' => $title,
+            'categories' => $categories
         ]);
     }
 
@@ -66,6 +70,10 @@ class ProductsController extends Controller
             $product->savePrices(request('prices'));
         }
 
+        if (request('categories')) {
+            $product->saveCategories(request('categories'));
+        }
+
         Mail::to($product->user->email)->send(
             new ProductCreated($product)
         );
@@ -79,9 +87,12 @@ class ProductsController extends Controller
 
         $title = __('Edycja produktu ') . $product->name;
 
+        $categories = Category::orderBy('created_at', 'asc')->get();
+
         return view('products.edit', [
             'title' => $title,
-            'product' => $product
+            'product' => $product,
+            'categories' => $categories,
         ]);
     }
 
@@ -101,6 +112,10 @@ class ProductsController extends Controller
 
         if (request('deletePrices')) {
             $product->deletePrices(request('deletePrices'));
+        }
+
+        if (request('categories')) {
+            $product->saveCategories(request('categories'));
         }
 
         $product->load('prices');

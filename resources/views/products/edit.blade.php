@@ -21,9 +21,10 @@
         <div class="form-group">
             <textarea class="form-control" name="description" placeholder="{{ __('Opis produktu') }}" required>{{ $product->description or old('description') }}</textarea>
         </div>
-        <div class="form-group">
-            @include('products.prices-input')
-        </div>
+
+        @include('prices.inputs')
+        @include('categories.checkboxes')
+
         <div class="links">
             <button class="btn btn-primary" type="submit">{{ __('Zapisz zmiany') }}</button>
             <a class="btn btn-secondary ml-1" href="{{ route('products.index') }}">{{ __('Powrót') }}</a>

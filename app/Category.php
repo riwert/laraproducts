@@ -16,5 +16,5 @@ class Category extends Model
         $this->name = request('name');
         $this->slug = request('slug');
         $this->description = request('description');
-    }
+    }    
 }

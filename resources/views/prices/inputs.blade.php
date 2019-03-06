@@ -1,7 +1,7 @@
 <h3>{{ __('Ceny') }}</h3>
-<ul class="product-price-list p-0">
+<ul class="product-price-list p-0 form-group">
     @if (old('prices'))
-        @foreach(old('prices') as $price)
+        @foreach (old('prices') as $price)
             <li class="d-flex justify-content-between mb-2">
                 @if (isset($price['id']))
                     <input type="hidden" name="prices[{{ $loop->iteration }}][id]" value="{{ $price['id'] }}">
@@ -14,7 +14,7 @@
             </li>
         @endforeach
     @elseif (isset($product->prices) && $product->prices->count())
-        @foreach($product->prices as $price)
+        @foreach ($product->prices as $price)
             <li class="d-flex justify-content-between mb-2">
                 <input type="hidden" name="prices[{{ $loop->iteration }}][id]" value="{{ $price->id }}">
                 <input class="form-control mx-1" type="text" name="prices[{{ $loop->iteration }}][name]" value="{{ $price->name }}" placeholder="{{ __('Nazwa ceny') }}" required>

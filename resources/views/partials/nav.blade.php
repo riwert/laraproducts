@@ -19,7 +19,7 @@
                 <li class="nav-item {{ Request::is('categories') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('categories.index') }}">{{ __('Kategorie') }}</a>
                 </li>
-                @if (Auth::user() && Auth::user()->isAdmin())                    
+                @if (Auth::user() && Auth::user()->isAdmin())
                     <li class="nav-item {{ Request::is('categories/add') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('categories.add') }}">{{ __('Dodaj kategorię') }}</a>
                     </li>

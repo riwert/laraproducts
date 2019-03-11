@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\ProductPrice;
 
 class Product extends Model
 {
@@ -34,7 +33,8 @@ class Product extends Model
         $priceObjArray = [];
 
         foreach ($prices as $price) {
-            $priceObj = (isset($price['id'])) ? ProductPrice::findOrFail((int) $price['id']) : new ProductPrice();
+            $id = (isset($price['id'])) ? (int) $price['id'] : null;
+            $priceObj = $this->prices()->firstOrNew(['id' => $id]);
             $priceObj->setFromArray($price);
             $priceObjArray[] = $priceObj;
         }
